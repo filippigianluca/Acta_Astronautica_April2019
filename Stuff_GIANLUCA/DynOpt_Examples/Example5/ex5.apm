@@ -1,0 +1,13 @@
+Parameters
+  p
+  u >=0 <=1
+
+Variables
+  x1 = 1
+  x2 = 0
+  
+Equations
+  maximize p * (1 - x1 - x2)
+
+  $x1 = u*(10*x2 - x1)
+  $x2 = -u*(10*x2-x1)-(1-u)*x2

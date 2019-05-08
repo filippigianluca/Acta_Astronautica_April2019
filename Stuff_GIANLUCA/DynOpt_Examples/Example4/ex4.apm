@@ -1,0 +1,17 @@
+Parameters
+  p
+  u >=298 <=398
+
+Variables
+  x1 = 1
+  x2 = 0
+
+Intermediates
+  k1 = 4000 * exp(-2500/u)
+  k2 = 6.2e5 * exp(-5000/u)
+  
+Equations
+  maximize p * x2
+
+  $x1 = -k1 * x1^2
+  $x2 = k1*x1^2 - k2*x2

@@ -1,0 +1,9 @@
+% run in serie i tuning di mpaidea
+
+Tune_MP_AIDEA_inner_u_so_interior_10agents
+
+Tune_MP_AIDEA_inner_u_so_interior_20agents
+
+Tune_MP_AIDEA_inner_u_so_sqp_10agents
+
+Tune_MP_AIDEA_inner_u_so_sqp_20agents

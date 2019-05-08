@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?><rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0"><channel xml:base="https://social.msdn.microsoft.com/Forums/en-US/windbg/thread/17432962-c6b6-4dfe-b6e5-0004b4f3bde8?outputAs=rss"><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;I am attempting to debug an application I have developed using WinDbg and I don't seem to be able to&amp;nbsp;get debugging symbol files for the following three files from the Microsoft symbol server:&lt;/p&gt;
+&lt;p&gt;MSVCP140.dll&lt;/p&gt;
+&lt;p&gt;CONCRT140.dll&lt;/p&gt;
+&lt;p&gt;VCRUNTIME140.dll&lt;/p&gt;
+&lt;p&gt;I believe these files are part of the Visual C&amp;#43;&amp;#43; Redistributable for Visual Studio 2015 which I have installed on my endpoint machine before running my service written in Visual Studio 2015.&lt;/p&gt;
+&lt;p&gt;An example output from WinDbg gives the following module information:&lt;/p&gt;
+&lt;p&gt;0: kd&amp;gt; lmvm msvcp140&lt;br/&gt;
+Browse full module list&lt;br/&gt;
+start&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; end&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; module name&lt;br/&gt;
+00007ff8`7eea0000 00007ff8`7ef3e000&amp;nbsp;&amp;nbsp; MSVCP140&amp;nbsp;&amp;nbsp; (no symbols)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Loaded symbol image file: MSVCP140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Image path: C:\Windows\SYSTEM32\MSVCP140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Image name: MSVCP140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Browse all global symbols&amp;nbsp; functions&amp;nbsp; data&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Timestamp:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Fri Jun 26 06:28:33 2015 (558CE301)&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; CheckSum:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 000A766E&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; ImageSize:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0009E000&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File version:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 14.0.23026.0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Product version:&amp;nbsp; 14.0.23026.0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File flags:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0 (Mask 3F)&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File OS:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4 Unknown Win32&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File type:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.0 Dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File date:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 00000000.00000000&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Translations:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0409.04b0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; CompanyName:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Microsoft Corporation&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; ProductName:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Microsoft® Visual Studio® 2015&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; InternalName:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; msvcp140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; OriginalFilename: msvcp140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; ProductVersion:&amp;nbsp;&amp;nbsp; 14.00.23026.0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; FileVersion:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 14.00.23026.0 built by: WCSETUP&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; FileDescription:&amp;nbsp; Microsoft® C Runtime Library&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; LegalCopyright:&amp;nbsp;&amp;nbsp; © Microsoft Corporation. All rights reserved.&lt;/p&gt;
+&lt;p&gt;And the attempt to load the module symbols outputs the following information:&lt;/p&gt;
+&lt;p&gt;0: kd&amp;gt; .reload /f msvcp140.dll&lt;br/&gt;
+SYMSRV:&amp;nbsp; e:\symbols\MSVCP140.dll\558CE3019e000\MSVCP140.dll - file not found&lt;br/&gt;
+SYMSRV:&amp;nbsp; File: MSVCP140.dll&lt;/p&gt;
+&lt;p&gt;SYMSRV:&amp;nbsp; Get File Path: /download/symbols/MSVCP140.dll/558CE3019e000/MSVCP140.dll&lt;/p&gt;
+&lt;p&gt;SYMSRV:&amp;nbsp; Notifies the client application that a proxy has been detected.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Connecting to the Server: http://msdl.microsoft.com/download/&lt;span&gt;&lt;/span&gt;symbols.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Successfully connected to the Server.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Sending the information request to the server.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Successfully sent the information request to the server.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Waiting for the server to respond to a request.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Successfully received a response from the server.&lt;br/&gt;
+*** ERROR: HTTP_STATUS_NOT_FOUND&lt;/p&gt;
+&lt;p&gt;I am able to download many other Microsoft symbols, so I am not expecting this to be an issue with my proxy. Has anyone else had this problem? Is it possible to confirm if these symbols are available on the symbol server as I have tried all the tools I am
+ aware of including SymChk&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description><copyright>© 2009 Microsoft Corporation. All rights reserved.</copyright><lastBuildDate>Thu, 02 Feb 2017 10:05:16 Z</lastBuildDate><a10:id>17432962-c6b6-4dfe-b6e5-0004b4f3bde8</a10:id><a10:link href="https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg" /><item><guid isPermaLink="true">https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#17432962-c6b6-4dfe-b6e5-0004b4f3bde8</guid><link>https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#17432962-c6b6-4dfe-b6e5-0004b4f3bde8</link><a10:author><a10:name>TimCobley</a10:name><a10:uri>https://social.msdn.microsoft.com:443/profile/timcobley/?type=forum</a10:uri></a10:author><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;I am attempting to debug an application I have developed using WinDbg and I don't seem to be able to&amp;nbsp;get debugging symbol files for the following three files from the Microsoft symbol server:&lt;/p&gt;
+&lt;p&gt;MSVCP140.dll&lt;/p&gt;
+&lt;p&gt;CONCRT140.dll&lt;/p&gt;
+&lt;p&gt;VCRUNTIME140.dll&lt;/p&gt;
+&lt;p&gt;I believe these files are part of the Visual C&amp;#43;&amp;#43; Redistributable for Visual Studio 2015 which I have installed on my endpoint machine before running my service written in Visual Studio 2015.&lt;/p&gt;
+&lt;p&gt;An example output from WinDbg gives the following module information:&lt;/p&gt;
+&lt;p&gt;0: kd&amp;gt; lmvm msvcp140&lt;br/&gt;
+Browse full module list&lt;br/&gt;
+start&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; end&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; module name&lt;br/&gt;
+00007ff8`7eea0000 00007ff8`7ef3e000&amp;nbsp;&amp;nbsp; MSVCP140&amp;nbsp;&amp;nbsp; (no symbols)&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Loaded symbol image file: MSVCP140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Image path: C:\Windows\SYSTEM32\MSVCP140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Image name: MSVCP140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Browse all global symbols&amp;nbsp; functions&amp;nbsp; data&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Timestamp:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Fri Jun 26 06:28:33 2015 (558CE301)&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; CheckSum:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 000A766E&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; ImageSize:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0009E000&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File version:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 14.0.23026.0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Product version:&amp;nbsp; 14.0.23026.0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File flags:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0 (Mask 3F)&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File OS:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 4 Unknown Win32&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File type:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.0 Dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; File date:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 00000000.00000000&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; Translations:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0409.04b0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; CompanyName:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Microsoft Corporation&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; ProductName:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Microsoft® Visual Studio® 2015&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; InternalName:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; msvcp140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; OriginalFilename: msvcp140.dll&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; ProductVersion:&amp;nbsp;&amp;nbsp; 14.00.23026.0&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; FileVersion:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 14.00.23026.0 built by: WCSETUP&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; FileDescription:&amp;nbsp; Microsoft® C Runtime Library&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; LegalCopyright:&amp;nbsp;&amp;nbsp; © Microsoft Corporation. All rights reserved.&lt;/p&gt;
+&lt;p&gt;And the attempt to load the module symbols outputs the following information:&lt;/p&gt;
+&lt;p&gt;0: kd&amp;gt; .reload /f msvcp140.dll&lt;br/&gt;
+SYMSRV:&amp;nbsp; e:\symbols\MSVCP140.dll\558CE3019e000\MSVCP140.dll - file not found&lt;br/&gt;
+SYMSRV:&amp;nbsp; File: MSVCP140.dll&lt;/p&gt;
+&lt;p&gt;SYMSRV:&amp;nbsp; Get File Path: /download/symbols/MSVCP140.dll/558CE3019e000/MSVCP140.dll&lt;/p&gt;
+&lt;p&gt;SYMSRV:&amp;nbsp; Notifies the client application that a proxy has been detected.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Connecting to the Server: http://msdl.microsoft.com/download/&lt;span&gt;&lt;/span&gt;symbols.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Successfully connected to the Server.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Sending the information request to the server.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Successfully sent the information request to the server.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Waiting for the server to respond to a request.&lt;br/&gt;
+SYMSRV:&amp;nbsp; Successfully received a response from the server.&lt;br/&gt;
+*** ERROR: HTTP_STATUS_NOT_FOUND&lt;/p&gt;
+&lt;p&gt;I am able to download many other Microsoft symbols, so I am not expecting this to be an issue with my proxy. Has anyone else had this problem? Is it possible to confirm if these symbols are available on the symbol server as I have tried all the tools I am
+ aware of including SymChk&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description><pubDate>Tue, 10 Nov 2015 16:56:41 Z</pubDate><enclosure url="https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=timcobley&amp;size=small" type="image/jpeg" length="1" /><a10:updated>2015-11-10T16:56:41Z</a10:updated></item><item><guid isPermaLink="true">https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#43e0f560-bfb9-4281-b726-b7a0d1098e22</guid><link>https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#43e0f560-bfb9-4281-b726-b7a0d1098e22</link><a10:author><a10:name>MaybeCompletelyW</a10:name><a10:uri>https://social.msdn.microsoft.com:443/profile/maybecompletelyw/?type=forum</a10:uri></a10:author><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>&lt;p&gt;Looks for me windbg wants to download the dlls first. Does it help, if you retrieve the respective dlls from the installed redist and point .exepath to them before the .reload?&lt;/p&gt;
+&lt;p&gt;With kind regards&lt;/p&gt;</description><pubDate>Tue, 10 Nov 2015 18:48:21 Z</pubDate><enclosure url="https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=maybecompletelyw&amp;size=small" type="image/jpeg" length="1" /><a10:updated>2015-11-10T18:48:21Z</a10:updated></item><item><guid isPermaLink="true">https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#e4b7e371-ec4f-4fe9-bc4d-877d7f4d14c6</guid><link>https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#e4b7e371-ec4f-4fe9-bc4d-877d7f4d14c6</link><a10:author><a10:name>TimCobley</a10:name><a10:uri>https://social.msdn.microsoft.com:443/profile/timcobley/?type=forum</a10:uri></a10:author><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>&lt;p&gt;Thank you very much for your response. You were absolutely correct, I had forgotten to set the .exepath value to the appropriate path and after setting&amp;nbsp;it everything&amp;nbsp;just started working.&lt;/p&gt;
+&lt;p&gt;Many Thanks!&lt;/p&gt;</description><pubDate>Wed, 11 Nov 2015 11:16:02 Z</pubDate><enclosure url="https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=timcobley&amp;size=small" type="image/jpeg" length="1" /><a10:updated>2015-11-11T11:16:02Z</a10:updated></item><item><guid isPermaLink="true">https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#98481c8a-649f-4859-92da-3d5af39800f6</guid><link>https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#98481c8a-649f-4859-92da-3d5af39800f6</link><a10:author><a10:name>Matthew Sliwa</a10:name><a10:uri>https://social.msdn.microsoft.com:443/profile/matthew%20sliwa/?type=forum</a10:uri></a10:author><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>I HAVE THE EXACT SAME PROBLEM EXPECT IM NOT MISSING CONCRT140.dll I look everywhere and tried everything I even read what you guys said and did not understand any of it. When I download the missing dll files FROM THIS SITE still says I'm missing it</description><pubDate>Sun, 30 Oct 2016 19:52:27 Z</pubDate><enclosure url="https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=matthew+sliwa&amp;size=small" type="image/jpeg" length="1" /><a10:updated>2016-10-30T19:52:27Z</a10:updated></item><item><guid isPermaLink="true">https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#5814118c-b525-4fa7-b1fb-841f4420be45</guid><link>https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#5814118c-b525-4fa7-b1fb-841f4420be45</link><a10:author><a10:name>MaybeCompletelyW</a10:name><a10:uri>https://social.msdn.microsoft.com:443/profile/maybecompletelyw/?type=forum</a10:uri></a10:author><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>&lt;p&gt;Windbg, debugging a dump, may want first to map the module. E. g. :&lt;/p&gt;
+&lt;pre class="prettyprint"&gt;0:000&amp;gt; &lt;em&gt;&lt;strong&gt;!sym noisy
+&lt;/strong&gt;&lt;/em&gt;noisy mode - symbol prompts on
+0:000&amp;gt; &lt;em&gt;&lt;strong&gt;.reload /f MSVCR120_CLR0400.dll
+&lt;/strong&gt;&lt;/em&gt;SYMSRV:  BYINDEX: 0x15
+         c:\mssymbols*http://msdl.microsoft.com/download/symbols
+         MSVCR120_CLR0400.dll
+         5525EFA8f7000
+SYMSRV:  c:\mssymbols\MSVCR120_CLR0400.dll\5525EFA8f7000\MSVCR120_CLR0400.dll - file not found
+SYMSRV:  HTTPGET: /download/symbols/MSVCR120_CLR0400.dll/5525EFA8f7000/MSVCR120_CLR0400.dll
+SYMSRV:  HttpSendRequest: 12007 - ERROR_INTERNET_NAME_NOT_RESOLVED
+SYMSRV:  c:\mssymbols\MSVCR120_CLR0400.dll\5525EFA8f7000\MSVCR120_CLR0400.dll not found
+SYMSRV:  http://msdl.microsoft.com/download/symbols/MSVCR120_CLR0400.dll/5525EFA8f7000/MSVCR120_CLR0400.dll not found
+....&lt;/pre&gt;
+&lt;p&gt;If module is not available from MS-symbol-server, you may set respective &amp;nbsp;.exepath, if you have a matching module:&lt;/p&gt;
+&lt;pre class="prettyprint"&gt;0:000&amp;gt; &lt;em&gt;&lt;strong&gt;.exepath&amp;#43; c:\temp
+&lt;/strong&gt;&lt;/em&gt;DBGHELP: Symbol Search Path: c:\program files (x86)\microsoft visual studio 14.0\vc\atlmfc\lib\amd64;c:\program files (x86)\microsoft visual studio 14.0\vc\atlmfc\src\mfc;srv*c:\mssymbols*http://msdl.microsoft.com/download/symbols
+Executable image search path is: c:\temp
+Expanded Executable image search path is: c:\temp
+
+************* Symbol Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             c:\temp
+0:000&amp;gt; &lt;em&gt;&lt;strong&gt;.reload /f MSVCR120_CLR0400.dll
+&lt;/strong&gt;&lt;/em&gt;DBGHELP: c:\temp\MSVCR120_CLR0400.dll - OK
+DBGENG:  c:\temp\MSVCR120_CLR0400.dll - Mapped image memory
+...&lt;/pre&gt;
+With kind regards&lt;br/&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description><pubDate>Sun, 30 Oct 2016 22:21:05 Z</pubDate><enclosure url="https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=maybecompletelyw&amp;size=small" type="image/jpeg" length="1" /><a10:updated>2016-10-30T22:21:05Z</a10:updated></item><item><guid isPermaLink="true">https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#665729ca-c332-4bc6-bbbb-90a3d3bcb42e</guid><link>https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#665729ca-c332-4bc6-bbbb-90a3d3bcb42e</link><a10:author><a10:name>Matthew Sliwa</a10:name><a10:uri>https://social.msdn.microsoft.com:443/profile/matthew%20sliwa/?type=forum</a10:uri></a10:author><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>&lt;p&gt;Thanks but I Don't get what you just put down&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</description><pubDate>Mon, 07 Nov 2016 00:19:12 Z</pubDate><enclosure url="https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=matthew+sliwa&amp;size=small" type="image/jpeg" length="1" /><a10:updated>2016-11-07T00:19:12Z</a10:updated></item><item><guid isPermaLink="true">https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#caa0b518-9fcb-41f3-95d6-8fb1676babe8</guid><link>https://social.msdn.microsoft.com/Forums/en-US/17432962-c6b6-4dfe-b6e5-0004b4f3bde8/missing-symbol-files-for-msvcp140dll-concrt140dll-and-vcruntime140dll?forum=windbg#caa0b518-9fcb-41f3-95d6-8fb1676babe8</link><a10:author><a10:name>MaybeCompletelyW</a10:name><a10:uri>https://social.msdn.microsoft.com:443/profile/maybecompletelyw/?type=forum</a10:uri></a10:author><title>Missing symbol files for MSVCP140.dll, CONCRT140.dll and VCRUNTIME140.dll</title><description>&lt;div&gt;This one&lt;br/&gt;
+&lt;em&gt;https://msdn.microsoft.com/en-us/library/windows/hardware/hh439335(v=vs.85).aspx&lt;/em&gt;&lt;/div&gt;
+&lt;div&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://social.msdn.microsoft.com/Forums/getfile/959619"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;With kind regards&lt;/p&gt;
+&lt;/div&gt;</description><pubDate>Mon, 07 Nov 2016 11:04:06 Z</pubDate><enclosure url="https://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=maybecompletelyw&amp;size=small" type="image/jpeg" length="1" /><a10:updated>2016-11-07T11:04:06Z</a10:updated></item></channel></rss>

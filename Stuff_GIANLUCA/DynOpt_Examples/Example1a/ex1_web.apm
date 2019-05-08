@@ -1,0 +1,38 @@
+Parameters
+  p
+End Parameters
+
+Variables
+  u
+  x1 = 1
+  x2 = 0
+End Variables
+
+Equations
+  minimize p * x2
+
+  $x1 = u
+  $x2 = x1^2 + u^2
+End Equations
+  
+File *.csv
+  time,p
+  0,0
+  0.001,0
+  0.1,0
+  0.2,0
+  0.3,0
+  0.4,0
+  0.5,0
+  0.6,0
+  0.7,0
+  0.8,0
+  0.9,0
+  1.0,1
+End File
+
+File overrides.dbs
+  nlc.nodes = 4
+  nlc.solver = 1
+  nlc.imode = 6
+End File

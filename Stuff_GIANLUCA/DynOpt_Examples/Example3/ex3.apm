@@ -1,0 +1,13 @@
+Parameters
+  p
+  u >=0 <=5
+
+Variables
+  x1 = 1
+  x2 = 0
+
+Equations
+  maximize p * x2
+
+  $x1 = -(u+0.5*u^2)*x1
+  $x2 = u*x1

@@ -1,0 +1,14 @@
+Parameters
+  p
+  u
+
+Variables
+  x1 = 1
+  x2 = 0
+
+Equations
+  minimize p * x2
+
+  p * x1 = 1
+  $x1 = u
+  $x2 = x1^2 + u^2
