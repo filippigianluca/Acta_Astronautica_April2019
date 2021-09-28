@@ -77,7 +77,7 @@ title('Opaque bounds, with outline');
 axis tight;
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_01.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_01.png)
 
 For our second axis, we use the same 2 lines, and this time assign x-varying bounds to both lines. Rather than using the LineSpec syntax, this example uses the default color order to assign the colors of the lines and patches. I also turn on the `'alpha'` option, which renders the patch wit partial transparency.
 
@@ -88,7 +88,7 @@ title('Transparent bounds');
 axis tight;
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_02.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_02.png)
 
 The bounds can also be assigned to a horizontal orientation, for a case where the x-axis represents the dependent variable. In this case, the scalar error bound value applies to both lines and both sides of the lines.
 
@@ -99,7 +99,7 @@ title('Horizontal bounds');
 axis tight;
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_03.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_03.png)
 
 Rather than use a LineSpec or the default color order, a colormap array can be used to assign colors. In this case, increasingly-narrower bounds are added on top of the same line.
 
@@ -115,7 +115,7 @@ set(ax(3), 'ylim', [0 2*pi]);
 axis tight;
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_04.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_04.png)
 
 ## Example 2: Filling gaps
 
@@ -153,7 +153,7 @@ text(x(40), sin(x(40))-0.2, {'\uparrow','Two-sided','bound','gap'}, 'vert', 'top
 axis tight equal;
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_05.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_05.png)
 
 The default method for dealing with NaNs in boundedline is to leave the gap in the line, but smooth over the gap in the bounds based on the neighboring points. This option can be nice if you only have one or two missing points, and you're not interested in emphasizing those gaps in your plot:
 
@@ -164,7 +164,7 @@ ho = outlinebounds(hl,hp);
 set(ho, 'linestyle', ':', 'color', 'r', 'marker', '.');
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_06.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_06.png)
 
 I've added bounds outlines in a contrasting color so you can see how I'm handling individual points.
 
@@ -177,7 +177,7 @@ ho = outlinebounds(hl,hp);
 set(ho, 'linestyle', ':', 'color', 'r', 'marker', '.');
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_07.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_07.png)
 
 The final option removes points from the patch that are NaNs. The visual result is very similar to the fill option, but the missing points are apparent if you plot the bounds outlines.
 
@@ -188,7 +188,7 @@ ho = outlinebounds(hl,hp);
 set(ho, 'linestyle', ':', 'color', 'r', 'marker', '.');
 ```
 
-![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/7c5b14c853d021af9805c60a77e4594ee23adb4b/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_08.png)
+![](https://github.com/filippigianluca/Acta_Astronautica_April2019/tree/37a87a48c88297f54ab51790fc6c7190953146ef/Stuff_GIANLUCA/nice_plot/kakearney_boundedline/readmeExtras/README_08.png)
 
 ## Contributions
 
