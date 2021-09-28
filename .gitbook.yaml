@@ -4,7 +4,6 @@ structure:
     readme: README.md   
     summary: SUMMARY.md
     
-redirects:  
-   .docs: ./README.md  
+
 
 
