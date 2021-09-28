@@ -9,7 +9,7 @@ work for the Acta Astronautica journal paper
 ### second intro
 
 ```text
-x+1
+x+1= $\lambda$
 d
 ```
 
