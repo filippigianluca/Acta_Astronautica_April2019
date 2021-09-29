@@ -1,7 +1,6 @@
 ---
 description: >-
-  This is an example of what can be done with Gitbook and GitHub. The book is at
-  the [book](https://gianlucafilippi-91.gitbook.io/acta/)
+  This is an example of what can be done with Gitbook and GitHub. The book is at the [link](https://gianlucafilippi-91.gitbook.io/acta/)
 ---
 
 # Example Gitbook
