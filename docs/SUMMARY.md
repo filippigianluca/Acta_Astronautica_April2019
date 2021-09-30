@@ -1,8 +1,8 @@
 # Table of contents
 
 * [Example Gitbook](README.md)
-* [thermal model](untitled.md)
-* [Chapter - 2](chapter-2/README.md)
-  * [Chapter - 2- 1](chapter-2/chapter-2-1.md)
-  * [Chapter - 2 -2](chapter-2/chapter-2-2.md)
+* [thermal model](thermal.md)
+  * [Chapter - 2](chapter-2/README.md)
+* [Chapter - 2- 1](chapter-2/chapter-2-1.md)
+* [Chapter - 2 -2](chapter-2/chapter-2-2.md)
 
