@@ -1,4 +1,4 @@
-# Chapter - 1
+# thermal model
 
 The container is approximated with thermal-electrical analogy network of lumped masses. For each node of the network the following energy balance equation holds:
 
