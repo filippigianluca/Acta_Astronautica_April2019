@@ -8,5 +8,5 @@ The book is at the [link](https://gianlucafilippi-91.gitbook.io/acta/) The book 
 
 1. [Chapter 1](https://gianlucafilippi-91.gitbook.io/acta/untitled)
 2. [Chapter 2](https://app.gitbook.com/@gianlucafilippi-91/s/acta/~/drafts/-MkienRBtXzKW2WYkdBI/chapter-2)
-3. [Chapter - 2- 1](chapter-2/chapter-2-1.md)
+3. [Chapter - 2- 1](chapter-2-1.md)
 
